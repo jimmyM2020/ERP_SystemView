@@ -13,7 +13,8 @@ const LABELS: Record<string, { crumb: string; title: string }> = {
 
 export default function Topbar() {
   const pathname = usePathname()
-  const info = LABELS[pathname] ?? { crumb: 'ERP', title: 'ERP System' }
+  const safePathname = pathname ?? ''
+  const info = LABELS[safePathname] ?? { crumb: 'ERP', title: 'ERP System' }
   return (
     <header className={styles.topbar}>
       <div className={styles.left}>
