@@ -1,2 +1,2 @@
-import VentasPage from '@/pages/dashboard/VentasPage'
+import VentasPage from '@/page/dashboard/VentasPage'
 export default VentasPage

@@ -1,2 +1,7 @@
-import LoginPage from '@/pages/auth/LoginPage'
-export default LoginPage
+import dynamic from 'next/dynamic'
+
+const LoginPage = dynamic(() => import('@/page/auth/LoginPage'), { ssr: false })
+
+export default function Page() {
+	return <LoginPage />
+}

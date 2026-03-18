@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TrendingUp, ShoppingCart, Users, DollarSign, Zap } from 'lucide-react'
 import StatCard from '@/components/dashboard/StatCard'
 import { systemService } from '@/services/authService'
@@ -14,6 +14,7 @@ const FEED = [
 ]
 
 export default function HomeView() {
+  const [today, setToday]         = useState('')
   const [health, setHealth]       = useState<Record<string, unknown> | null>(null)
   const [healthErr, setHealthErr] = useState('')
   const [loading, setLoading]     = useState(false)
@@ -30,9 +31,12 @@ export default function HomeView() {
     }
   }
 
-  const today = new Date().toLocaleDateString('es-GT', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-  })
+  useEffect(() => {
+    const formatted = new Date().toLocaleDateString('es-GT', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+    })
+    setToday(formatted)
+  }, [])
 
   return (
     <div className={styles.page}>

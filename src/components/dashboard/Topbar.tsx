@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import styles from './Topbar.module.css'
@@ -13,7 +14,13 @@ const LABELS: Record<string, { crumb: string; title: string }> = {
 
 export default function Topbar() {
   const pathname = usePathname()
-  const safePathname = pathname ?? ''
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const safePathname = mounted ? (pathname ?? '') : ''
   const info = LABELS[safePathname] ?? { crumb: 'ERP', title: 'ERP System' }
   return (
     <header className={styles.topbar}>

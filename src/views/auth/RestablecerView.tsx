@@ -18,15 +18,15 @@ interface Props {
 
 export default function RestablecerView({ onSuccess }: Props) {
   const [token, setToken]           = useState('')
+  const [isClient, setIsClient]     = useState(false)
   const [loading, setLoading]       = useState(false)
   const [success, setSuccess]       = useState(false)
   const [serverError, setServerError] = useState('')
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search)
-      setToken(params.get('token') ?? '')
-    }
+    setIsClient(true)
+    const params = new URLSearchParams(window.location.search)
+    setToken(params.get('token') ?? '')
   }, [])
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<RestablecerFormData>({
@@ -53,7 +53,7 @@ export default function RestablecerView({ onSuccess }: Props) {
     }
   }
 
-  const noToken = token === '' && typeof window !== 'undefined'
+  const noToken = isClient && token === ''
 
   return (
     <AuthCard title="Nueva contraseña" subtitle="Elige una contraseña segura para tu cuenta.">

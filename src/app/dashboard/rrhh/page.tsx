@@ -1,2 +1,2 @@
-import RrhhPage from '@/pages/dashboard/RrhhPage'
+import RrhhPage from '@/page/dashboard/RrhhPage'
 export default RrhhPage

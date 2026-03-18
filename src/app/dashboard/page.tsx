@@ -1,2 +1,2 @@
-import DashboardHomePage from '@/pages/dashboard/DashboardHomePage'
+import DashboardHomePage from '@/page/dashboard/DashboardHomePage'
 export default DashboardHomePage

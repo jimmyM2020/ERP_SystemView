@@ -19,13 +19,13 @@ const NAV = [
     label: 'Reportes',
     items: [
       { href: '/dashboard/reportes', label: 'Reportes',    icon: BarChart3 },
-      { href: '/dashboard/ajustes',  label: 'Documentos',  icon: FileText },
+      // { href: '/dashboard/ajustes',  label: 'Documentos',  icon: FileText },
     ],
   },
   {
     label: 'Sistema',
     items: [
-      { href: '/dashboard/actividad', label: 'Actividad', icon: Activity },
+      // { href: '/dashboard/actividad', label: 'Actividad', icon: Activity },
       { href: '/dashboard/ajustes',   label: 'Ajustes',   icon: Settings },
     ],
   },
