@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Light ── */
+:root, [data-theme='light'] {
+  --bg-base:         #d8e8f5;
+  --bg-mesh-a:       #b8d4ef;
+  --bg-mesh-b:       #e0d4f5;
+  --bg-mesh-c:       #c8eaf5;
+  --glass-bg:        rgba(255,255,255,0.48);
+  --glass-bg-hover:  rgba(255,255,255,0.65);
+  --glass-border:    rgba(255,255,255,0.78);
+  --glass-shadow:    0 8px 32px rgba(31,60,110,0.12), 0 2px 8px rgba(31,60,110,0.06);
+  --glass-blur:      blur(20px) saturate(180%);
+  --sidebar-glass:   rgba(255,255,255,0.38);
+  --sidebar-border:  rgba(255,255,255,0.65);
+  --text-primary:    #0f1923;
+  --text-secondary:  #4a5568;
+  --text-muted:      #8a9ab5;
+  --text-on-accent:  #ffffff;
+  --accent:          #3b6cf7;
+  --accent-hover:    #2e5ce0;
+  --accent-dim:      rgba(59,108,247,0.12);
+  --accent-ring:     rgba(59,108,247,0.25);
+  --success:         #10b981;
+  --success-dim:     rgba(16,185,129,0.12);
+  --warning:         #f59e0b;
+  --warning-dim:     rgba(245,158,11,0.12);
+  --error:           #ef4444;
+  --error-dim:       rgba(239,68,68,0.12);
+  --info:            #3b82f6;
+  --info-dim:        rgba(59,130,246,0.12);
+  --input-bg:        rgba(255,255,255,0.6);
+  --input-border:    rgba(148,163,184,0.45);
+  --input-focus:     rgba(59,108,247,0.45);
+  --divider:         rgba(148,163,184,0.28);
+  --radius-sm:  6px;
+  --radius:     12px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+  --font-body:  'Outfit', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+  --transition: 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Dark ── */
+[data-theme='dark'] {
+  --bg-base:         #080c14;
+  --bg-mesh-a:       #0d1628;
+  --bg-mesh-b:       #110d20;
+  --bg-mesh-c:       #0a1520;
+  --glass-bg:        rgba(15,25,50,0.58);
+  --glass-bg-hover:  rgba(20,35,65,0.68);
+  --glass-border:    rgba(255,255,255,0.08);
+  --glass-shadow:    0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  --glass-blur:      blur(20px) saturate(160%);
+  --sidebar-glass:   rgba(10,18,38,0.62);
+  --sidebar-border:  rgba(255,255,255,0.07);
+  --text-primary:    #e8edf5;
+  --text-secondary:  #8a9ab5;
+  --text-muted:      #4a5568;
+  --text-on-accent:  #ffffff;
+  --accent:          #5b8af7;
+  --accent-hover:    #7aa0ff;
+  --accent-dim:      rgba(91,138,247,0.15);
+  --accent-ring:     rgba(91,138,247,0.3);
+  --success:         #34d399;
+  --success-dim:     rgba(52,211,153,0.12);
+  --warning:         #fbbf24;
+  --warning-dim:     rgba(251,191,36,0.12);
+  --error:           #f87171;
+  --error-dim:       rgba(248,113,113,0.12);
+  --info:            #60a5fa;
+  --info-dim:        rgba(96,165,250,0.12);
+  --input-bg:        rgba(255,255,255,0.05);
+  --input-border:    rgba(255,255,255,0.10);
+  --input-focus:     rgba(91,138,247,0.45);
+  --divider:         rgba(255,255,255,0.07);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg-base);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Animated mesh background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 20%, var(--bg-mesh-a) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 80% 10%, var(--bg-mesh-b) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 80%, var(--bg-mesh-c) 0%, transparent 60%),
+    var(--bg-base);
+  z-index: -1;
+}
+
+/* Noise grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9998;
+}

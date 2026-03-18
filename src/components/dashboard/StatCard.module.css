@@ -1,0 +1,32 @@
+.card {
+  background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg); padding: 20px 22px;
+  position: relative; overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover { transform: translateY(-2px); }
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.blue::before   { background: linear-gradient(90deg, var(--accent), transparent); }
+.green::before  { background: linear-gradient(90deg, var(--success), transparent); }
+.orange::before { background: linear-gradient(90deg, var(--warning), transparent); }
+.red::before    { background: linear-gradient(90deg, var(--error), transparent); }
+.purple::before { background: linear-gradient(90deg, #a78bfa, transparent); }
+
+.inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 6px; }
+.value { font-size: 26px; font-weight: 700; color: var(--text-primary); line-height: 1; margin-bottom: 4px; }
+.change { font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 3px; }
+.up      { color: var(--success); }
+.down    { color: var(--error); }
+.neutral { color: var(--text-muted); }
+
+.iconWrap { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.blue .iconWrap   { background: var(--accent-dim);            color: var(--accent);   }
+.green .iconWrap  { background: var(--success-dim);           color: var(--success);  }
+.orange .iconWrap { background: var(--warning-dim);           color: var(--warning);  }
+.red .iconWrap    { background: var(--error-dim);             color: var(--error);    }
+.purple .iconWrap { background: rgba(167,139,250,0.12);       color: #a78bfa;         }
