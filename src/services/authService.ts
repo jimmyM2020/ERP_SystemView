@@ -19,5 +19,5 @@ export const authService = {
 }
 
 export const systemService = {
-  health: () => axios.get('http://178.62.234.17/health'),
+  health: () => axios.get('/health'),
 }
